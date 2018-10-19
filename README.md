@@ -4,7 +4,6 @@ Class: CIS-277-001
 Professor: Alan Eliscu
 Date: 10/08/2018
 Name: Marlen 
-
 */
 
 #include <iostream>
