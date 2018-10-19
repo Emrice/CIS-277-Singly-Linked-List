@@ -1,4 +1,3 @@
-# CIS-277-Singly-Linked-List
 
 /*
 Class: CIS-277-001
@@ -6,16 +5,6 @@ Professor: Alan Eliscu
 Date: 10/08/2018
 Name: Marlen 
 
-This assignment is an enhancement of the example provided in the textbook for linking airports.
-Assume the user provides you with the following 2 items of information for as many different airports as they desire:
-1.  Standard 3 character airport code ///   2.  Distance from New York City's LaGuardia
-Airport to the specified airport, in miles.
-The head of the list should be represented with an element whose value is 'LGA' and whose distance is 0.
-Airport codes will be provided in order of closest to furthest away.
-Create a singly linked list to house each of the airports as a node in the same order in which it was provided (nearest to furthest).
-Each node should contain both the airport code and the entered distance.
-Once the list is built, develop an additional function which allows the user to search for a
-user-specified code and then output all other codes and distances which follow it in the list.
 */
 
 #include <iostream>
@@ -238,5 +227,3 @@ void LinkList::DisplayList ()
         cout << "End of List\n\n\n";
     }
 }
-
-
