@@ -1,0 +1,122 @@
+/*
+Class: CIS-277-001
+Professor: Alan Eliscu
+Date: 10/04/2018
+Name: Marlen Herrera
+
+Create a singly linked list which contains 3 nodes.
+The user is requested to provide a single value which will become the
+"elem" value for the node.
+Then repeat the process 2 more times.
+Each node is to be added at the end of the list.
+After you have completed the list, read thru
+the list from the beginning and print each node.
+*/
+
+#include <iostream>
+#include <stdlib.h>
+#include <string>
+#include <cstdio>
+#include <cstdlib>
+using namespace std;
+
+class Node
+{
+    private:
+        string data;
+        Node* currentNext;      //Pointer -> current next variable of Node
+    public:
+        string getData()    //Returns data values
+            { return data; };
+        Node* getCurrentNext()  //Returns pointer for next node
+            { return currentNext; };
+        void LinkNodes(Node* newNodeAddress)      //sets next pointer = to newNode's address
+            { currentNext = newNodeAddress; };
+        void SetNodeData(string newNodeData)  //sets data = to newNode's data
+            { data = newNodeData; };
+};
+
+class LinkList
+{
+    private:
+        Node *head;
+    public:
+        LinkList()
+            { head = NULL; };   //initializes head to be equal to null
+        void InsertNode();      //creates a new node and
+        void DisplayList();
+};
+
+int main ()
+{
+    LinkList listOne;
+    int x = 0;
+
+    cout <<"\n:::::::::::::::::::: LIST PROGRAM ::::::::::::::::::::\n";
+
+    cout << "You will be asked to input values.\n";
+
+    for (int x = 0; x < 3; x++)
+    {
+        cout << x + 1 << ". ";
+        listOne.InsertNode();
+    }
+
+    listOne.DisplayList();
+
+    cout << "\n:::::::::::::::::::: END OF PROGRAM ::::::::::::::::::::\n";
+
+    system("pause");
+    return 0;
+}
+
+void LinkList::InsertNode ()
+{
+    Node* newNode = new Node();     //New Node
+    string input;
+
+    cout << "Enter value: ";
+    getline(cin, input);
+
+    newNode->SetNodeData(input);
+    newNode->LinkNodes(NULL);     //sets the 'next' section of newly made node point to null
+
+    Node *temp = head;      //Temp pointer points to the same address as head
+
+    if (temp != NULL)       //If temp is not equal to NULL
+    {
+        while ( temp->getCurrentNext() != NULL)    //While the 'next' section of the node isnt pointing to the end of the list
+        {
+            temp = temp->getCurrentNext();     //Gets 'next' part of current node and makes it equal to temp ---->
+                                            //Temp is now pointing to what the previous node's 'next' was pointing to.
+        }
+
+        temp->LinkNodes(newNode);     //if it is pointing to null it sets the current nodes 'next' pointer --->
+                                            //to the newNode that was made in this function
+    }
+    else        //If temp is equal to NULL
+    {
+        head = newNode;     //Address of the first node is assigned to head
+    }
+}
+
+void LinkList::DisplayList ()
+{
+    Node *temp = head;
+
+    cout << "\n\n List Contents: \n";
+    if ( temp->getCurrentNext() == NULL)
+    {
+        cout << temp->getData() << " ----> End of List\n";
+    }
+    else
+    {
+        while( temp != NULL)
+        {
+            cout << temp->getData() << " ---> ";
+            temp = temp->getCurrentNext();
+        }
+
+        cout << "End of List\n\n\n";
+    }
+}
